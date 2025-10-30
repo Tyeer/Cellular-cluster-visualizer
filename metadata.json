@@ -1,0 +1,5 @@
+{
+  "name": "Cellular Frequency Reuse Visualizer",
+  "description": "An interactive tool to demonstrate and analyze cellular frequency reuse patterns based on hexagonal tessellation geometry. Visualize how different cluster sizes (N) impact system capacity and co-channel interference.",
+  "requestFramePermissions": []
+}
