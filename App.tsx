@@ -25,9 +25,9 @@ const App: React.FC = () => {
     const cochannelCells = useMemo(() => cells.filter(c => c.group === 0).length, [cells]);
 
     const systemCapacity = useMemo(() => {
-        const M = 100; // Assuming a fixed number of cells for capacity calculation
-        return M * (totalBandwidth / channelBandwidth) / clusterSizeN;
-    }, [totalBandwidth, channelBandwidth, clusterSizeN]);
+        const channelsPerCell = Math.floor((totalBandwidth / channelBandwidth) / clusterSizeN);
+        return channelsPerCell * totalCells;
+    }, [totalBandwidth, channelBandwidth, clusterSizeN, totalCells]);
 
     useEffect(() => {
         if (animate) {
@@ -81,6 +81,7 @@ const App: React.FC = () => {
                         <PerformanceChart
                             totalBandwidth={totalBandwidth}
                             channelBandwidth={channelBandwidth}
+                            totalCells={totalCells}
                         />
                     </div>
                     <div className="lg:col-span-2 bg-gray-900/50 p-4 rounded-xl shadow-2xl border border-gray-700">
@@ -96,9 +97,6 @@ const App: React.FC = () => {
                            clusterSizeN={clusterSizeN}
                            cochannelCells={cochannelCells}
                            systemCapacity={systemCapacity}
-                           cochannelDistance={cochannelDistance}
-                           i={i}
-                           j={j}
                          />
                     </div>
                 </main>

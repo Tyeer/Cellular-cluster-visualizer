@@ -20,9 +20,6 @@ interface MetricsPanelProps {
     clusterSizeN: number;
     cochannelCells: number;
     systemCapacity: number;
-    cochannelDistance: number;
-    i: number;
-    j: number;
 }
 
 const MetricsPanel: React.FC<MetricsPanelProps> = ({
@@ -30,16 +27,13 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({
     clusterSizeN,
     cochannelCells,
     systemCapacity,
-    cochannelDistance,
-    i,
-    j
 }) => {
     return (
         <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
             <Metric label="Total Cells" value={totalCells} helpText="Total number of cells in the rendered grid." />
             <Metric label="Reuse Factor" value={`1 / ${clusterSizeN}`} helpText="The fraction of total channels available in a single cell." />
             <Metric label="Co-channel Cells" value={cochannelCells} helpText="Cells using the same frequency (Group A)." />
-            <Metric label="System Capacity" value={systemCapacity.toFixed(0)} helpText="Total simultaneous users supported in a 100-cell system." />
+            <Metric label="System Capacity" value={systemCapacity.toFixed(0)} helpText="Total simultaneous users the visible network can support." />
         </div>
     );
 };
